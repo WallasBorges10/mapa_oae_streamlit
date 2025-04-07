@@ -7,3 +7,4 @@ streamlit==1.33.0
 streamlit-folium==0.18.0
 streamlit-searchbox==0.1.8
 fiona==1.9.5
+openpyxl==3.1.2
