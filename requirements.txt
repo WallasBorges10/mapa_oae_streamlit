@@ -1,9 +1,9 @@
-geopandas==0.14.1
-pandas==2.1.4
-shapely==2.0.2
-matplotlib==3.8.2
-folium==0.15.1
-streamlit==1.29.0
-streamlit-folium==0.17.0
-streamlit-searchbox==0.3.3
+geopandas==0.14.3
+pandas==2.2.1
+shapely==2.0.3
+matplotlib==3.8.3
+folium==0.16.0
+streamlit==1.33.0
+streamlit-folium==0.18.0
+streamlit-searchbox==0.1.8
 fiona==1.9.5
