@@ -1,10 +1,10 @@
-streamlit==1.31.1
+streamlit==1.32.2
 streamlit-folium==0.18.0
 streamlit-searchbox==0.1.9
-pandas==2.2.1
+pandas==2.2.2
 geopandas==0.14.3
-shapely==2.0.3
-fiona==1.9.5
-folium==0.15.1
-matplotlib==3.8.3
+shapely==2.0.4
+fiona==1.9.6
+folium==0.16.0
+matplotlib==3.8.4
 openpyxl==3.1.2
