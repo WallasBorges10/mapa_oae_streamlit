@@ -19,7 +19,7 @@ import os
 @st.cache_data
 def load_data(uploaded_files):
     # Verificar se todos os arquivos necessários foram carregados
-    required_files = ['base_oae_colep', 'SNV_202501A', 'BR_UF_2022']
+    required_files = ['base_oae_colep', 'SNV_202501A', '23012025_relatoriosEmLote', 'BR_UF_2022']
     for file in required_files:
         if file not in uploaded_files:
             st.error(f"Arquivo obrigatório não encontrado: {file}")
@@ -38,7 +38,11 @@ def load_data(uploaded_files):
             z.extractall(temp_dir)
             # Carregar o shapefile usando o caminho completo
             v_snv_2025 = gpd.read_file(os.path.join(temp_dir, shp_file))
-              
+        
+        # Carregar arquivo CSV
+        v_oae_sgo = pd.read_csv(uploaded_files['23012025_relatoriosEmLote'], 
+                               dtype=str, sep=';', encoding='latin1')
+        
         # Processar o shapefile BR_UF
         with zipfile.ZipFile(uploaded_files['BR_UF_2022'], 'r') as z:
             # Encontrar o arquivo .shp dentro do ZIP
@@ -180,13 +184,18 @@ uploaded_snv = st.sidebar.file_uploader("Shapefile SNV (ZIP contendo .shp, .dbf,
 if uploaded_snv is not None:
     uploaded_files['SNV_202501A'] = uploaded_snv
 
+# Upload do arquivo CSV
+uploaded_csv = st.sidebar.file_uploader("Relatório SGO (CSV)", type=['csv'], key='23012025_relatoriosEmLote')
+if uploaded_csv is not None:
+    uploaded_files['23012025_relatoriosEmLote'] = uploaded_csv
+
 # Upload do shapefile BR_UF (deve ser um zip)
 uploaded_uf = st.sidebar.file_uploader("Shapefile BR_UF (ZIP contendo .shp, .dbf, etc)", type=['zip'], key='BR_UF_2022')
 if uploaded_uf is not None:
     uploaded_files['BR_UF_2022'] = uploaded_uf
 
 # Verificar se todos os arquivos foram carregados antes de continuar
-if len(uploaded_files) == 3:
+if len(uploaded_files) == 4:
     df_snv, df_oae = load_data(uploaded_files)
     
     # Restante do código (igual ao original)...
