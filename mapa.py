@@ -186,7 +186,7 @@ if uploaded_uf is not None:
     uploaded_files['BR_UF_2022'] = uploaded_uf
 
 # Verificar se todos os arquivos foram carregados antes de continuar
-if len(uploaded_files) == 4:
+if len(uploaded_files) == 3:
     df_snv, df_oae = load_data(uploaded_files)
     
     # Restante do código (igual ao original)...
