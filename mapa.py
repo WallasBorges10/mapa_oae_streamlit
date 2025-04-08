@@ -180,11 +180,6 @@ uploaded_snv = st.sidebar.file_uploader("Shapefile SNV (ZIP contendo .shp, .dbf,
 if uploaded_snv is not None:
     uploaded_files['SNV_202501A'] = uploaded_snv
 
-# Upload do arquivo CSV
-uploaded_csv = st.sidebar.file_uploader("Relatório SGO (CSV)", type=['csv'], key='23012025_relatoriosEmLote')
-if uploaded_csv is not None:
-    uploaded_files['23012025_relatoriosEmLote'] = uploaded_csv
-
 # Upload do shapefile BR_UF (deve ser um zip)
 uploaded_uf = st.sidebar.file_uploader("Shapefile BR_UF (ZIP contendo .shp, .dbf, etc)", type=['zip'], key='BR_UF_2022')
 if uploaded_uf is not None:
