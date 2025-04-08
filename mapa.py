@@ -19,7 +19,7 @@ import os
 @st.cache_data
 def load_data(uploaded_files):
     # Verificar se todos os arquivos necessários foram carregados
-    required_files = ['base_oae_colep', 'SNV_202501A', '23012025_relatoriosEmLote', 'BR_UF_2022']
+    required_files = ['base_oae_colep', 'SNV_202501A', 'BR_UF_2022']
     for file in required_files:
         if file not in uploaded_files:
             st.error(f"Arquivo obrigatório não encontrado: {file}")
@@ -38,11 +38,7 @@ def load_data(uploaded_files):
             z.extractall(temp_dir)
             # Carregar o shapefile usando o caminho completo
             v_snv_2025 = gpd.read_file(os.path.join(temp_dir, shp_file))
-        
-        # Carregar arquivo CSV
-        v_oae_sgo = pd.read_csv(uploaded_files['23012025_relatoriosEmLote'], 
-                               dtype=str, sep=';', encoding='latin1')
-        
+              
         # Processar o shapefile BR_UF
         with zipfile.ZipFile(uploaded_files['BR_UF_2022'], 'r') as z:
             # Encontrar o arquivo .shp dentro do ZIP
